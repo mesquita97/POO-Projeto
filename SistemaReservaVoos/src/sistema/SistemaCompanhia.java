@@ -1,16 +1,19 @@
 package sistema;
 
-public interface SistemaCompanhia extends Sistema {		
+import aeronaves.Aeronave;
+
+public interface SistemaCompanhia extends Sistema {	
 	
 	@Override
-	public abstract void reservaPoltrona(String numPoltrona);
+	public abstract void reservaPoltrona(int numero, String numPoltrona);
 	
 	@Override
-	public abstract void mostrarOpcoes(String classe, int numPessoas, String posicao);
+	public abstract void mostrarOpcoes(int numero, String classe, int numPessoas, String posicao);
 	
 	void cancelaVoo(int numero);
 	
-	void cadastraVoo(int numero, String horarioIda, String horarioChegada, String cidadeEmbarque,
-			double precoEconomica, double precoExecutiva);
+	void cadastraVoo(Aeronave aeronave, int numero,String horarioIda,String horarioChegada, String cidadeEmbarque,
+			String cidadeDestino, double precoEconomica, double precoExecutiva);
 	
+	void mostraLista();
 }

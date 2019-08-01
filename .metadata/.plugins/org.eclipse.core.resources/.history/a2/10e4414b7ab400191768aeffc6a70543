@@ -1,0 +1,59 @@
+package cliente;
+
+import sistema.Sistema;
+import sistema.SistemaUsuario;
+import sistema.Voo;
+
+public class Passageiro implements SistemaUsuario {
+	String nome, cpf;
+	int idade;
+	
+	public Passageiro(String nome, String cpf, int idade) {
+		this.nome=nome;
+		this.cpf=cpf;
+		this.idade=idade;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public int getIdade() {
+		return idade;
+	}
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+
+	@Override
+	public void reservaPoltrona(int numero, String numPoltrona) {
+		Sistema.agenda.reservaPoltrona(numero, numPoltrona);
+	}
+
+	@Override
+	public void mostrarOpcoes(int numero, String classe, int numPessoas, String posicao) {
+		Sistema.agenda.mostrarOpcoes(numero, classe, numPessoas, posicao);
+	}
+
+	@Override
+	public String buscaVoos(String destino) {
+		return null;
+	}
+
+	@Override
+	public void comprar(int numeroVoo, String formaDePagamento) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
+}

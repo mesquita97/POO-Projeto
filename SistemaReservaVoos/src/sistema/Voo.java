@@ -1,15 +1,41 @@
 package sistema;
 
+import aeronaves.Aeronave;
 import cliente.Passageiro;
 
 public class Voo {
+	Aeronave aeronave;
 	private String data, horarioIda, horarioChegada, cidadeEmbarque, cidadeDestino, status;
 	private int numero;
 	private int numPassageiros=0;
-	Passageiro[] passageiros = new Passageiro[10];
+	Passageiro[] passageiros = new Passageiro[110];
 	private double precoEconomica, precoExecutiva;
 	private double precoTotal=0.0;
+	public Voo(Aeronave aeronave, int numero,String horarioIda,String horarioChegada, String cidadeEmbarque,
+			String cidadeDestino, double precoEconomica, double precoExecutiva) {
+		aeronave = new Aeronave();
+		this.aeronave=aeronave;
+		this.numero=numero;
+		this.horarioIda=horarioIda;
+		this.horarioChegada=horarioChegada;
+		this.cidadeEmbarque=cidadeEmbarque;
+		this.cidadeDestino=cidadeDestino;
+		this.precoEconomica=precoEconomica;
+		this.precoExecutiva=precoExecutiva;
+		this.status="Parte as :" + getHorarioIda();
+	}
+	public Aeronave getAeronave() {
+		return aeronave;
+	}
 	
+	public String getCidadeDestino() {
+		return cidadeDestino;
+	}
+
+	public String getCidadeEmbarque() {
+		return cidadeEmbarque;
+	}
+
 	public String getData() {
 		return data;
 	}
@@ -18,16 +44,8 @@ public class Voo {
 		return horarioChegada;
 	}
 
-	public String getCidadeEmbarque() {
-		return cidadeEmbarque;
-	}
-
-	public String getCidadeDestino() {
-		return cidadeDestino;
-	}
-
-	public String getStatus() {
-		return status;
+	public String getHorarioIda() {
+		return horarioIda;
 	}
 
 	public int getNumero() {
@@ -54,19 +72,30 @@ public class Voo {
 		return precoTotal;
 	}
 
-	public Voo(int numero,String horarioIda,String horarioChegada, String cidadeEmbarque,
-			String cidadeDestino, double precoEconomica, double precoExecutiva) {
-		this.numero=numero;
-		this.horarioIda=horarioIda;
-		this.horarioChegada=horarioChegada;
-		this.cidadeEmbarque=cidadeEmbarque;
-		this.cidadeDestino=cidadeDestino;
-		this.precoEconomica=precoEconomica;
-		this.precoExecutiva=precoExecutiva;
-		this.status="Parte as :" + getHorarioIda();
+	public String getStatus() {
+		return status;
 	}
 
-	public String getHorarioIda() {
-		return horarioIda;
+	public void mostrarOpcoes(String classe, int numPessoas, String posicao) {
+		this.aeronave.mostrarOpcoes(classe, numPessoas, posicao);
+	}
+
+	public void reservaPoltrona(String numPoltrona) {
+		this.aeronave.reservaPoltrona(numPoltrona);
+	}
+
+	public void setAeronave(Aeronave aeronave) {
+		this.aeronave = aeronave;
+	}
+	
+	
+	public void mostraAssentosDisponiveis(int numeroVoo) {
+		this.aeronave.imprimePoltronas();
+	}
+	
+	@Override
+	public String toString() {
+		return "Voo = " + getNumero() + " Embarque = " + getCidadeEmbarque() + " " + getHorarioIda() + " Destino = " + getCidadeDestino() +
+			  " " + getHorarioChegada() + "\n";
 	}
 }

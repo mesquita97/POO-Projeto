@@ -1,5 +1,6 @@
 package cliente;
 
+import sistema.Sistema;
 import sistema.SistemaUsuario;
 
 public class Passageiro implements SistemaUsuario {
@@ -32,21 +33,18 @@ public class Passageiro implements SistemaUsuario {
 	}
 
 	@Override
-	public void reservaPoltrona(String numPoltrona) {
-		// TODO Auto-generated method stub
-		
+	public void reservaPoltrona(int numero, String numPoltrona) {
+		Sistema.agenda.reservaPoltrona(numero, numPoltrona);
 	}
 
 	@Override
-	public void mostrarOpcoes(String classe, int numPessoas, String posicao) {
-		// TODO Auto-generated method stub
-		
+	public void mostrarOpcoes(int numero, String classe, int numPessoas, String posicao) {
+		Sistema.agenda.mostrarOpcoes(numero, classe, numPessoas, posicao);
 	}
 
 	@Override
-	public String buscaVoos(String destino) {
-		// TODO Auto-generated method stub
-		return null;
+	public void buscaVoos(String destino) {
+		Sistema.agenda.buscaVoos(destino);
 	}
 
 	@Override
@@ -54,7 +52,5 @@ public class Passageiro implements SistemaUsuario {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
 	
 }

@@ -1,0 +1,32 @@
+/**
+ * 
+ */
+package funcionario;
+
+import aeronaves.Aeronave;
+import sistema.SistemaCompanhia;
+import sistema.Voo;
+
+public class Atendente implements SistemaCompanhia {
+	@Override
+	public void reservaPoltrona(int numero, String numPoltrona) {
+		AgendaVoo.reservaPoltrona(voo, numPoltrona);
+	}
+
+	@Override
+	public void mostrarOpcoes(Voo voo, String classe, int numPessoas, String posicao) {
+		voo.mostrarOpcoes(voo, classe, numPessoas, posicao);
+	}
+
+	@Override
+	public void cancelaVoo(int numero) {
+		
+	}
+
+	@Override
+	public void cadastraVoo(Aeronave aeronave, int numero, String horarioIda, String horarioChegada,
+			String cidadeEmbarque, String cidadeDestino, double precoEconomica, double precoExecutiva) {
+		
+	}
+
+}

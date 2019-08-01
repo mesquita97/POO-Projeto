@@ -1,8 +1,6 @@
 package aeronaves;
 
-import sistema.SistemaCompanhia;
-
-public class Aeronave {
+public class Aeronave{
 	private Classes primeiraClasse;
 	private Classes segundaClasse;
 	

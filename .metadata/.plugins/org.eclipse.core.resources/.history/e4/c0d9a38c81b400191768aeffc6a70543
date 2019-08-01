@@ -1,0 +1,28 @@
+package aeronaves;
+
+public class Aeronave{
+	private Classes primeiraClasse;
+	private Classes segundaClasse;
+	
+	public Aeronave() {
+		this.primeiraClasse = new ClasseExecutiva();
+		this.segundaClasse = new ClasseEconomica();
+	}
+	
+	public void imprimePoltronas() {
+		this.primeiraClasse.imprimePoltronas();
+		this.segundaClasse.imprimePoltronas();
+	}
+
+	public void reservaPoltrona(int numero, String numPoltrona) {
+		if(numPoltrona.charAt(0)=='A') this.primeiraClasse.reservaPoltrona(numPoltrona);
+		if(numPoltrona.charAt(0)=='E') this.segundaClasse.reservaPoltrona(numPoltrona);
+	}
+
+
+	public void mostrarOpcoes(int numero, String classe, int numPessoas, String posicao) {
+		if(classe=="Executiva") this.primeiraClasse.mostrarOpcoes(numPessoas, posicao);
+		if(classe=="Economica") this.segundaClasse.mostrarOpcoes(numPessoas, posicao);
+	}
+	
+}

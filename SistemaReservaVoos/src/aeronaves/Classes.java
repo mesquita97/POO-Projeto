@@ -9,4 +9,5 @@ public interface Classes {
 	void reservaPoltrona(String numPoltrona);
 
 	void mostrarOpcoes(int numPessoas, String posicao);
+
 }

@@ -1,0 +1,12 @@
+package sistema;
+
+
+public interface Sistema {
+	AgendaVoos agenda = new AgendaVoos();
+	
+	public abstract void reservaPoltrona(int numero, String numPoltrona);
+	
+	public abstract void mostrarOpcoes(int numero, String classe, int numPessoas, String posicao);
+
+
+}

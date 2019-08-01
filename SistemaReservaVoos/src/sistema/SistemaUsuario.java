@@ -3,12 +3,10 @@ package sistema;
 public interface SistemaUsuario extends Sistema {
 
 	@Override
-	void reservaPoltrona(String numPoltrona);
+	void reservaPoltrona(int numero, String numPoltrona);
 
 	@Override
-	void mostrarOpcoes(String classe, int numPessoas, String posicao);
-
-	String buscaVoos(String destino);
+	void mostrarOpcoes(int numero, String classe, int numPessoas, String posicao);
 	
 	void comprar(int numeroVoo, String formaDePagamento);
 	
