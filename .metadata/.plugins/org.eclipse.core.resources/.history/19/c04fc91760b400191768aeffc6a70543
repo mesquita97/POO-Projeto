@@ -1,0 +1,39 @@
+/**
+ * 
+ */
+package funcionario;
+
+import sistema.SistemaCompanhia;
+
+/**
+ * @author GabrielMesquitaMesqu
+ *
+ */
+public class Atendente implements SistemaCompanhia {
+
+	@Override
+	public void reservaPoltrona(String numPoltrona) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mostrarOpcoes(String classe, int numPessoas, String posicao) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void cancelaVoo(int numero) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void cadastraVoo(int numero, String horarioIda, String horarioChegada, String cidadeEmbarque,
+			double precoEconomica, double precoExecutiva) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

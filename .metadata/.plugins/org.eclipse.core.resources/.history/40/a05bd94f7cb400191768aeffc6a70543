@@ -1,0 +1,58 @@
+package sistema;
+
+import aeronaves.Aeronave;
+
+public class AgendaVoos implements SistemaCompanhia{
+	Voo[] voos = new Voo[10];
+	int numeroVoos=0;
+
+	public Voo[] getVoos() {
+		return voos;
+	}
+
+	public Voo getVoo(int numero) {
+		for(Voo voo: voos) {
+			if(voo.getNumero()==numero) return voo;	
+		}
+		return null;
+	}
+
+	@Override
+	public void reservaPoltrona(int numero, String numPoltrona) {
+		for(Voo v: voos) {
+			if(v.getNumero()==numero) v.reservaPoltrona(numPoltrona);
+		}
+	}
+
+	@Override
+	public void mostrarOpcoes(int numero, String classe, int numPessoas, String posicao) {
+		for(Voo v: voos) {
+			if(v.getNumero()==numero) v.mostrarOpcoes(classe, numPessoas, posicao);
+		}
+	}
+
+	@Override
+	public void cancelaVoo(int numero) {
+		for(int j=0; j<voos.length; j++) {
+			if(voos[j].getNumero()==numero) voos[j]=null; 
+		}
+		
+	}
+
+	@Override
+	public void cadastraVoo(Aeronave aeronave, int numero, String horarioIda, String horarioChegada,
+			String cidadeEmbarque, String cidadeDestino, double precoEconomica, double precoExecutiva) {
+			voos[numeroVoos]= new Voo(aeronave, numero, horarioIda, horarioChegada, cidadeEmbarque, cidadeDestino, precoEconomica,
+				precoExecutiva);
+			numeroVoos++;
+	}
+
+	@Override
+	public void buscaVoos(String destino) {
+		for(Voo v: voos) {
+			if(v.getCidadeDestino()==destino) System.out.print(v);
+		}
+	}
+	
+
+}

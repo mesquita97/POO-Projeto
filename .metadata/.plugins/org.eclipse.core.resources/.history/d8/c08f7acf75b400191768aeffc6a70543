@@ -1,0 +1,11 @@
+package sistema;
+
+
+public interface Sistema {
+	
+	public abstract void reservaPoltrona(Voo voo, String numPoltrona);
+	
+	public abstract void mostrarOpcoes(Voo voo, String classe, int numPessoas, String posicao);
+
+
+}

@@ -1,0 +1,15 @@
+package sistema;
+
+public interface SistemaUsuario extends Sistema {
+
+	@Override
+	void reservaPoltrona(Voo voo, String numPoltrona);
+
+	@Override
+	void mostrarOpcoes(Voo voo, String classe, int numPessoas, String posicao);
+
+	String buscaVoos(String destino);
+	
+	void comprar(int numeroVoo, String formaDePagamento);
+	
+}

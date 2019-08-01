@@ -1,0 +1,11 @@
+import aeronaves.Aeronave;
+
+public class Teste {
+
+	public static void main(String[] args) {
+		Atendente a = new Atendente();
+		
+			
+	}
+
+}

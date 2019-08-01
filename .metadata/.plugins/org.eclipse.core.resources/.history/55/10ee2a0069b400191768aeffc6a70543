@@ -1,0 +1,18 @@
+package sistema;
+
+import aeronaves.Aeronave;
+
+public interface SistemaCompanhia extends Sistema {		
+	
+	@Override
+	public abstract void reservaPoltrona(Voo voo ,String numPoltrona);
+	
+	@Override
+	public abstract void mostrarOpcoes(Voo voo, String classe, int numPessoas, String posicao);
+	
+	void cancelaVoo(int numero);
+	
+	void cadastraVoo(Aeronave aeronave, int numero,String horarioIda,String horarioChegada, String cidadeEmbarque,
+			String cidadeDestino, double precoEconomica, double precoExecutiva);
+	
+}

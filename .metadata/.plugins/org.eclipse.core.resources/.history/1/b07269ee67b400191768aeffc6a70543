@@ -1,0 +1,10 @@
+package sistema;
+
+
+public abstract class Sistema {
+	
+	public abstract void reservaPoltrona(String numPoltrona);
+	
+	public abstract void mostrarOpcoes(Voo voo, String classe, int numPessoas, String posicao);
+
+}
