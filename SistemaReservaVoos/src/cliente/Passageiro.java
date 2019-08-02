@@ -35,10 +35,15 @@ public class Passageiro extends Usuario {
 	}
 
 	public void compraPassagem(int numeroVoo, String numPoltrona, String formaDePagamento) {
-		Voo voo = Sistema.agenda.getVoo(numeroVoo);
-		voo.compraPassagem(this, numPoltrona);	
-		this.totalAPagar+=voo.getPreco(numPoltrona);
-		System.out.print("Valor total: R$ " + this.totalAPagar + "\n");
+		try {
+			Voo voo = Sistema.agenda.getVoo(numeroVoo);
+			voo.compraPassagem(this, numPoltrona);	
+			this.totalAPagar+=voo.getPreco(numPoltrona);
+			System.out.print("Valor total: R$ " + this.totalAPagar + "\n");
+		} catch(Exception e) {
+			System.out.print(e.getMessage());
+		}
+
 	}
 	
 }

@@ -14,7 +14,7 @@ public class Teste {
 		
 		Passageiro p1= new Passageiro("Gabriel", "111.333.889-21", 21);
 				
-		p1.reservaPoltrona(133, "Economica", 2, "Janela");
+		p1.reservaPoltrona(133, "economica", 2, "Janela");
 		
 
 		p1.compraPassagem(133, "E010", "Credito");

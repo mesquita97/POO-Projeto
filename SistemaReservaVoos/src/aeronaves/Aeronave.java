@@ -16,13 +16,16 @@ public class Aeronave implements SistemaAeronave{
 	}
 
 	@Override
-	public void reservaPoltrona(String numPoltrona) {
-		if(numPoltrona.charAt(0)=='A') this.primeiraClasse.reservaPoltrona(numPoltrona);
-		if(numPoltrona.charAt(0)=='E') this.segundaClasse.reservaPoltrona(numPoltrona);
+	public void reservaPoltrona(String numPoltrona) throws Exception {
+		numPoltrona=numPoltrona.toLowerCase();
+		if(numPoltrona.charAt(0)!='a' && numPoltrona.charAt(0)!='e') throw new Exception("Poltrona inválida\n");
+		if(numPoltrona.charAt(0)=='a') this.primeiraClasse.reservaPoltrona(numPoltrona);
+		if(numPoltrona.charAt(0)=='e') this.segundaClasse.reservaPoltrona(numPoltrona);
 	}
 
 	@Override
 	public void mostrarOpcoes(String classe, int numPessoas, String posicao) {
+		classe=classe.toLowerCase();
 		System.out.print("Poltronas sugeridas:\n");
 		if(classe=="Executiva") this.primeiraClasse.mostrarOpcoes(numPessoas, posicao);
 		if(classe=="Economica") this.segundaClasse.mostrarOpcoes(numPessoas, posicao);

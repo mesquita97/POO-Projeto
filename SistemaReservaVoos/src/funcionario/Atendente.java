@@ -21,8 +21,12 @@ public class Atendente extends Usuario {
 	}
 	
 	public void mostraAssentosDisponiveis(int numeroVoo) {
-		Voo voo = Sistema.agenda.getVoo(numeroVoo);
-		voo.mostraAssentosDisponiveis(numeroVoo);
+		try {
+			Voo voo = Sistema.agenda.getVoo(numeroVoo);
+			voo.mostraAssentosDisponiveis(numeroVoo);
+		} catch(Exception e) {
+			System.out.print(e.getMessage());
+		}
 	}
 	
 	public void mostraLista() {

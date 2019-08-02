@@ -83,18 +83,23 @@ public class Voo {
 		return status;
 	}
 
-	public void mostrarOpcoes(String classe, int numPessoas, String posicao) {
+	public void mostrarOpcoes(String classe, int numPessoas, String posicao) throws Exception {
+		classe=classe.toLowerCase();
+		if(classe != "economica" && classe != "executiva") throw new Exception("Classe não permitida, escolher executiva ou economica\n" + classe);
+		if(classe=="economica") System.out.print("Preço classe econômica: R$ " + getPrecoEconomica() + "\n");
+		if(classe=="executiva") System.out.print("Preço classe executiva: R$ " + getPrecoExecutiva() + "\n");
 		this.aeronave.mostrarOpcoes(classe, numPessoas, posicao);
-		if(classe=="Econômica") System.out.print("Preço classe econômica: R$ " + getPrecoEconomica() + "\n");
-		if(classe=="Executiva") System.out.print("Preço classe executiva: R$ " + getPrecoExecutiva() + "\n");
-
 	}
 
 	public void compraPassagem(Passageiro passageiro, String numPoltrona) {
-		this.aeronave.reservaPoltrona(numPoltrona);
-		this.passageiros[numPassageiros]=passageiro;
-		this.numPassageiros++;
-		this.precoTotal+=getPreco(numPoltrona);
+		try {
+			this.aeronave.reservaPoltrona(numPoltrona);
+			this.passageiros[numPassageiros]=passageiro;
+			this.numPassageiros++;
+			this.precoTotal+=getPreco(numPoltrona);
+		} catch(Exception e) {
+			System.out.print(e.getMessage());
+		}
 	}
 
 	

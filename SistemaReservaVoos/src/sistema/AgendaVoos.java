@@ -10,11 +10,10 @@ public class AgendaVoos {
 		return voos;
 	}
 
-	public Voo getVoo(int numero) {
+	public Voo getVoo(int numero) throws Exception {
 		for(Voo voo: voos) {
 			if(voo.getNumero()==numero) return voo;	
-		}
-		return null;
+		} throw new Exception("Vôo inválido.\n");
 	}
 
 
@@ -32,10 +31,14 @@ public class AgendaVoos {
 			numeroVoos++;
 	}
 
-	public void buscaVoos(String destino) {
+	public void buscaVoos(String destino) throws Exception {
+		int a=0;
 		for(int j=0; j<numeroVoos; j++) {
-			if(voos[j].getCidadeDestino()==destino) System.out.print(voos[j]);
-		}
+			if(voos[j].getCidadeDestino()==destino) {
+				System.out.print(voos[j]);
+				a=1;
+			}
+		} if(a==0) throw new Exception("Não há vôos para " + destino);
 	}
 	
 	
