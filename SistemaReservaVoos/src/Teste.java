@@ -1,4 +1,3 @@
-import aeronaves.Aeronave;
 import cliente.Passageiro;
 import funcionario.Atendente;
 import sistema.Sistema;
@@ -15,13 +14,11 @@ public class Teste {
 		
 		Passageiro p1= new Passageiro("Gabriel", "111.333.889-21", 21);
 		
-		p1.reservaPoltrona(133, "E003");
-		
-		a.mostraAssentosDisponiveis(133);
-		
 		p1.reservaPoltrona(133, "E101");
 		
 		a.mostraAssentosDisponiveis(133);
+		
+		
 
 	}
 

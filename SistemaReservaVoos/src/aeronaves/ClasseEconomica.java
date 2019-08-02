@@ -34,7 +34,6 @@ public class ClasseEconomica implements Classes {
 
 		
 	public void imprimePoltronas(int j1, int j2) {
-		System.out.println("Poltronas sugeridas: ");
 		for(int i=0; i<poltronas.length; i++) {
 			if(poltronas[i][j1]!= "      ") System.out.print(poltronas[i][j1] + " ");
 			if(poltronas[i][j2]!= "      ") System.out.print(poltronas[i][j2] + " ");

@@ -10,6 +10,7 @@ public class Aeronave{
 	}
 	
 	public void imprimePoltronas() {
+		System.out.print("-----------------Aeronave-------------------\n");
 		this.primeiraClasse.imprimePoltronas();
 		this.segundaClasse.imprimePoltronas();
 	}
@@ -21,6 +22,7 @@ public class Aeronave{
 
 
 	public void mostrarOpcoes(String classe, int numPessoas, String posicao) {
+		System.out.print("Poltronas sugeridas:\n");
 		if(classe=="Executiva") this.primeiraClasse.mostrarOpcoes(numPessoas, posicao);
 		if(classe=="Economica") this.segundaClasse.mostrarOpcoes(numPessoas, posicao);
 	}

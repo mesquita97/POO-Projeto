@@ -34,19 +34,47 @@ public class ClasseExecutiva implements Classes  {
 		
 	}
 
+	public void imprimePoltronas(int j1, int j2) {
+		for(int i=0; i<poltronas.length; i++) {
+			if(poltronas[i][j1]!= "      ") System.out.print(poltronas[i][j1] + " ");
+			if(poltronas[i][j2]!= "      ") System.out.print(poltronas[i][j2] + " ");
+			System.out.print("\n");
+		}
+		
+	}
 
 	@Override
 	public void reservaPoltrona(String numPoltrona) {
 		int i=Integer.parseInt(String.valueOf(numPoltrona.charAt(1)));
 		int j=Integer.parseInt(String.valueOf(numPoltrona.charAt(2)));
-		poltronas[i][j]= "     ";		}
+		poltronas[i][j]= "     ";	
+	}
 
 
 	@Override
 	public void mostrarOpcoes(int numPessoas, String posicao) {
-		// TODO Auto-generated method stub
-		
+		posicao=posicao.toLowerCase();
+		switch(posicao) {
+		case "corredor":
+			if(numPessoas==2) {
+				imprimePoltronas(0,1);
+				imprimePoltronas(2,3);
+			} else imprimePoltronas();
+		case "meio":
+			if(numPessoas==2) {
+				imprimePoltronas(0,1);
+				imprimePoltronas(2,3);
+			}else imprimePoltronas();
+		case "janela":
+			if(numPessoas==2) {
+				imprimePoltronas(0,1);
+				imprimePoltronas(2,3);
+			} else imprimePoltronas();
+		} if(numPessoas>=3) {
+			imprimePoltronas();
+		}
 	}
+	
 	
 
 }
