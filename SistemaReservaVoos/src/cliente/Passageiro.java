@@ -1,11 +1,13 @@
 package cliente;
 
 import sistema.Sistema;
-import sistema.SistemaUsuario;
+import sistema.Usuario;
+import sistema.Voo;
 
-public class Passageiro implements SistemaUsuario {
+public class Passageiro extends Usuario {
 	String nome, cpf;
 	int idade;
+	double totalAPagar=0;
 	
 	public Passageiro(String nome, String cpf, int idade) {
 		this.nome=nome;
@@ -32,25 +34,11 @@ public class Passageiro implements SistemaUsuario {
 		this.idade = idade;
 	}
 
-	@Override
-	public void reservaPoltrona(int numero, String numPoltrona) {
-		Sistema.agenda.reservaPoltrona(numero, numPoltrona);
-	}
-
-	@Override
-	public void mostrarOpcoes(int numero, String classe, int numPessoas, String posicao) {
-		Sistema.agenda.mostrarOpcoes(numero, classe, numPessoas, posicao);
-	}
-
-	@Override
-	public void buscaVoos(String destino) {
-		Sistema.agenda.buscaVoos(destino);
-	}
-
-	@Override
-	public void comprar(int numeroVoo, String formaDePagamento) {
-		// TODO Auto-generated method stub
-		
+	public void compraPassagem(int numeroVoo, String numPoltrona, String formaDePagamento) {
+		Voo voo = Sistema.agenda.getVoo(numeroVoo);
+		voo.compraPassagem(this, numPoltrona);	
+		this.totalAPagar+=voo.getPreco(numPoltrona);
+		System.out.print("Valor total: R$ " + this.totalAPagar + "\n");
 	}
 	
 }

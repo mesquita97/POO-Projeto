@@ -1,24 +1,19 @@
 package aeronaves;
 
-public class ClasseEconomica implements Classes {
+public class ClasseEconomica  {
 	private String[][] poltronas = new String[15][6];
 
 	public ClasseEconomica() {
-		Poltronas();
-	}
-	
-	@Override
-	public void Poltronas() {
 		for(int i=0; i<poltronas.length;i++) {
 			for(int j=0; j<poltronas[0].length; j++) {
 				if(i<10) poltronas[i][j] = "[E0" + i + j + "]";
 				else poltronas[i][j] = "[E" + i + j + "]";
 
 			}
-		}		
+		}	
 	}
+	
 
-	@Override
 	public void imprimePoltronas() {
 		for(int i=0; i<poltronas.length; i++) {
 			for(int j=0; j<poltronas[0].length-3;j++) {
@@ -33,7 +28,7 @@ public class ClasseEconomica implements Classes {
 	}
 
 		
-	public void imprimePoltronas(int j1, int j2) {
+	private void imprimePoltronas(int j1, int j2) {
 		for(int i=0; i<poltronas.length; i++) {
 			if(poltronas[i][j1]!= "      ") System.out.print(poltronas[i][j1] + " ");
 			if(poltronas[i][j2]!= "      ") System.out.print(poltronas[i][j2] + " ");
@@ -42,15 +37,13 @@ public class ClasseEconomica implements Classes {
 		
 	}
 	
-	@Override
-	public void reservaPoltrona(String numPoltrona) {
+	protected void reservaPoltrona(String numPoltrona) {
 		int i=Integer.parseInt(numPoltrona.substring(1, 3));
 		int j=Integer.parseInt(String.valueOf(numPoltrona.charAt(3)));
 		poltronas[i][j]= "      ";	
 	}
 
-	@Override
-	public void mostrarOpcoes(int numPessoas, String posicao) {
+	protected void mostrarOpcoes(int numPessoas, String posicao) {
 		posicao=posicao.toLowerCase();
 		switch(posicao) {
 		case "corredor":

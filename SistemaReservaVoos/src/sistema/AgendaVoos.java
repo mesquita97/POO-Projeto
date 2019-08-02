@@ -2,7 +2,7 @@ package sistema;
 
 import aeronaves.Aeronave;
 
-public class AgendaVoos implements SistemaCompanhia{
+public class AgendaVoos {
 	Voo[] voos = new Voo[10];
 	int numeroVoos=0;
 
@@ -17,21 +17,7 @@ public class AgendaVoos implements SistemaCompanhia{
 		return null;
 	}
 
-	@Override
-	public void reservaPoltrona(int numero, String numPoltrona) {
-		for(int j=0; j<numeroVoos; j++) {
-			if(voos[j].getNumero()==numero) voos[j].reservaPoltrona(numPoltrona);
-		}
-	}
 
-	@Override
-	public void mostrarOpcoes(int numero, String classe, int numPessoas, String posicao) {
-		for(int j=0; j<numeroVoos; j++) {
-			if(voos[j].getNumero()==numero) voos[j].mostrarOpcoes(classe, numPessoas, posicao);
-		}
-	}
-
-	@Override
 	public void cancelaVoo(int numero) {
 		for(int j=0; j<numeroVoos; j++) {
 			if(voos[j].getNumero()==numero) voos[j]=null; 
@@ -39,7 +25,6 @@ public class AgendaVoos implements SistemaCompanhia{
 		numeroVoos--;
 	}
 
-	@Override
 	public void cadastraVoo(Aeronave aeronave, int numero, String horarioIda, String horarioChegada,
 			String cidadeEmbarque, String cidadeDestino, double precoEconomica, double precoExecutiva) {
 			voos[numeroVoos]= new Voo(aeronave, numero, horarioIda, horarioChegada, cidadeEmbarque, cidadeDestino, precoEconomica,
@@ -47,12 +32,12 @@ public class AgendaVoos implements SistemaCompanhia{
 			numeroVoos++;
 	}
 
-	@Override
 	public void buscaVoos(String destino) {
 		for(int j=0; j<numeroVoos; j++) {
 			if(voos[j].getCidadeDestino()==destino) System.out.print(voos[j]);
 		}
 	}
+	
 	
 	public void mostraLista(){
 		for(int j=0; j<numeroVoos; j++) {
@@ -60,10 +45,4 @@ public class AgendaVoos implements SistemaCompanhia{
 		}
 	}
 
-	public void mostraAssentosDisponiveis(int numeroVoo) {
-		for(int j=0; j<numeroVoos; j++) {
-			if(voos[j].getNumero()==numeroVoo) voos[j].mostraAssentosDisponiveis(numeroVoo);
-		}
-		
-	}
 }

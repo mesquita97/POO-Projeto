@@ -22,7 +22,7 @@ public class Voo {
 		this.cidadeDestino=cidadeDestino;
 		this.precoEconomica=precoEconomica;
 		this.precoExecutiva=precoExecutiva;
-		this.status="Parte as :" + getHorarioIda();
+		this.status="Parte as: " + getHorarioIda();
 	}
 	public Aeronave getAeronave() {
 		return aeronave;
@@ -59,6 +59,13 @@ public class Voo {
 	public Passageiro[] getPassageiros() {
 		return passageiros;
 	}
+	
+	public double getPreco(String numPoltrona) {
+		char classe = numPoltrona.charAt(0);
+		if(classe=='E') return precoEconomica;
+		if(classe=='A') return precoExecutiva;
+		else return 0;
+	}
 
 	public double getPrecoEconomica() {
 		return precoEconomica;
@@ -78,12 +85,19 @@ public class Voo {
 
 	public void mostrarOpcoes(String classe, int numPessoas, String posicao) {
 		this.aeronave.mostrarOpcoes(classe, numPessoas, posicao);
+		if(classe=="Econômica") System.out.print("Preço classe econômica: R$ " + getPrecoEconomica() + "\n");
+		if(classe=="Executiva") System.out.print("Preço classe executiva: R$ " + getPrecoExecutiva() + "\n");
+
 	}
 
-	public void reservaPoltrona(String numPoltrona) {
+	public void compraPassagem(Passageiro passageiro, String numPoltrona) {
 		this.aeronave.reservaPoltrona(numPoltrona);
+		this.passageiros[numPassageiros]=passageiro;
+		this.numPassageiros++;
+		this.precoTotal+=getPreco(numPoltrona);
 	}
 
+	
 	public void setAeronave(Aeronave aeronave) {
 		this.aeronave = aeronave;
 	}

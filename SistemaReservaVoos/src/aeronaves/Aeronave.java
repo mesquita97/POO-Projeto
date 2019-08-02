@@ -1,10 +1,10 @@
 package aeronaves;
 
-public class Aeronave{
-	private Classes primeiraClasse;
-	private Classes segundaClasse;
+public class Aeronave implements SistemaAeronave{
+	private ClasseExecutiva primeiraClasse;
+	private ClasseEconomica segundaClasse;
 	
-	public Aeronave() {
+	public Aeronave(){
 		this.primeiraClasse = new ClasseExecutiva();
 		this.segundaClasse = new ClasseEconomica();
 	}
@@ -15,12 +15,13 @@ public class Aeronave{
 		this.segundaClasse.imprimePoltronas();
 	}
 
+	@Override
 	public void reservaPoltrona(String numPoltrona) {
 		if(numPoltrona.charAt(0)=='A') this.primeiraClasse.reservaPoltrona(numPoltrona);
 		if(numPoltrona.charAt(0)=='E') this.segundaClasse.reservaPoltrona(numPoltrona);
 	}
 
-
+	@Override
 	public void mostrarOpcoes(String classe, int numPessoas, String posicao) {
 		System.out.print("Poltronas sugeridas:\n");
 		if(classe=="Executiva") this.primeiraClasse.mostrarOpcoes(numPessoas, posicao);

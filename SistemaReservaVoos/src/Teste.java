@@ -13,11 +13,14 @@ public class Teste {
 		a.cadastraVoo(Sistema.aeronaves[3], 136, "08:20", "09:40", "São Paulo", "Rio de Janeiro", 1800.88, 5700.00);
 		
 		Passageiro p1= new Passageiro("Gabriel", "111.333.889-21", 21);
+				
+		p1.reservaPoltrona(133, "Economica", 2, "Janela");
 		
-		p1.reservaPoltrona(133, "E101");
+
+		p1.compraPassagem(133, "E010", "Credito");
+		p1.compraPassagem(133, "E011", "Credito");
 		
 		a.mostraAssentosDisponiveis(133);
-		
 		
 
 	}
