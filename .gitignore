@@ -1,1 +1,4 @@
 .metadata/
+SistemaReservaVoos_v2/src/*.class
+SistemaReservaVoos_v2/bin/
+SistemaReservaVoos_v2/.settings/
