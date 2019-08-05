@@ -60,4 +60,9 @@ public class Atendente extends Usuario {
 		usuarios[numUsuarios]=new Passageiro(nome, cpf, idade);
 		return usuarios[numUsuarios];
 	}
+
+	public void verificaVoo(int numero) throws Exception{
+		Sistema.agenda.getVoo(numero);
+		if(Sistema.agenda.getVoo(numero)==null) throw new Exception("Vôo inválido");
+	}
 }

@@ -130,29 +130,12 @@ public class Painel {
 
 	private void reservaPoltrona() throws Exception {
 		String classe="", posicao="";
+		String pagamento="";
 		int numeroVoo = Integer.parseInt(JOptionPane.showInputDialog("Qual o numero do Vôo desejado ?"));
-		
-		opcao = Integer.parseInt(JOptionPane.showInputDialog("Qual classe ? [1]Economica [2]Executiva"));
-		switch(opcao) {
-			case 1:
-				classe="economica";
-			case 2:
-				classe="executiva";
-		}
-		
+		verificaVoo(numeroVoo);
+		classe = pegaClasse(classe);
 		int numPessoas=Integer.parseInt(JOptionPane.showInputDialog("Quantas pessoas o acompanharão?"));
-		opcao=Integer.parseInt(JOptionPane.showInputDialog("[1]Janela [2]Meio [3]Corredor"));
-		switch(opcao) {
-			case 1:
-				posicao ="janela";
-				break;
-			case 2:
-				posicao="meio";
-				break;
-			case 3:
-				posicao="corredor";
-				break;
-		}
+		posicao=pegaPosicao(posicao);
 		
 		try {
 			passageiro.reservaPoltrona(numeroVoo, classe, numPessoas, posicao);
@@ -166,33 +149,84 @@ public class Painel {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		
-		int c = 0 ;
-		while (c < numPessoas) {
-			posicao = JOptionPane.showInputDialog("Qual é o assento desejado ?");
-			passageiro.reservaPoltrona(numeroVoo, classe, numPessoas, posicao);
-			c++;
-		}
-		JOptionPane.showMessageDialog(null, "Poltrona Reservada !");
+		pagamento=definePagamento(pagamento);
 		
-		String pagamento="";
-		
-		opcao = Integer.parseInt(JOptionPane
-					   .showInputDialog("Credito ou Debito ?\n\n"
-					   				  + "[1] Crédito\n"
-									  + "[2] Débito\n"
-									  + "[0] Cancelar\n"));
-		if(opcao == 1) {
-				pagamento = "Credito";
-				JOptionPane.showMessageDialog(null,  "         -----------------Aeronave-------------------\n"
-												   + passageiro.compraPassagem(numeroVoo, posicao, pagamento) + pagamento  + "\n\n" + atendente.mostraAssentosDisponiveisString(numeroVoo));
-		}
-		else if (opcao == 2) {
-			pagamento = "Debito";
-			JOptionPane.showMessageDialog(null,  "         -----------------Aeronave-------------------\n"											+ passageiro.compraPassagem(numeroVoo, posicao, pagamento) + pagamento  + "\n\n" + atendente.mostraAssentosDisponiveisString(numeroVoo));
-		}
+		pegaAssentos(numPessoas, numeroVoo, posicao, pagamento);		
 		
 		telaIncial();
 		//Fim Resrvar Poltrona		
+	}
+
+
+	private void pegaAssentos(int numPessoas,int numeroVoo, String posicao, String pagamento) {
+		int c = 0 ;
+		while (c < numPessoas) {
+			posicao = JOptionPane.showInputDialog("Qual é o assento desejado ?");
+			JOptionPane.showMessageDialog(null,  "         -----------------Aeronave-------------------\n"
+					   + passageiro.compraPassagem(numeroVoo, posicao, pagamento));	
+			c++;
+		}
+		JOptionPane.showMessageDialog(null, "Poltrona Reservada !");
+		JOptionPane.showMessageDialog(null, pagamento  + "\n\n" + atendente.mostraAssentosDisponiveisString(numeroVoo));		
+	}
+
+
+	private String definePagamento(String pagamento) {
+		pagamento=null;
+		opcao = Integer.parseInt(JOptionPane
+				   .showInputDialog("Credito ou Debito ?\n\n"
+				   				  + "[1] Crédito\n"
+								  + "[2] Débito\n"
+								  + "[0] Cancelar\n"));
+	
+		if(opcao == 1) {
+			pagamento = "Credito";
+		}
+		else if (opcao == 2) {
+			pagamento = "Debito";
+		}		return pagamento;
+	}
+
+
+	private String pegaPosicao(String posicao) {
+		opcao=Integer.parseInt(JOptionPane.showInputDialog("[1]Janela [2]Meio [3]Corredor"));
+		switch(opcao) {
+			case 1:
+				posicao ="janela";
+				return posicao;
+			case 2:
+				posicao="meio";
+				return posicao;
+			case 3:
+				posicao="corredor";
+				return posicao;
+		} return null;
+	}
+
+
+	private String pegaClasse(String classe) {
+		opcao = Integer.parseInt(JOptionPane.showInputDialog("Qual classe ? [1]Economica [2]Executiva"));
+		switch(opcao) {
+			case 1:
+				classe="economica";
+				return classe;
+			case 2:
+				classe="executiva";
+				return classe;
+		} if(opcao!=1 && opcao!=2 && opcao!=0) {
+			JOptionPane.showMessageDialog(null, "Opcao Invalida");
+			pegaClasse(classe);
+		} return null;
+	}
+
+
+	private void verificaVoo(int numeroVoo) {
+		try {
+			atendente.verificaVoo(numeroVoo);
+		} catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Vôo inválido");
+			telaCliente();
+		}		
 	}
 
 

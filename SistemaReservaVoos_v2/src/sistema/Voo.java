@@ -104,11 +104,7 @@ public class Voo {
 
 	public String RelatorioVoo(int numero) {
 		String s = "";
-		for(int j=0; j<Sistema.agenda.numeroVoos; j++) {
-			if(Sistema.agenda.voos[j].getNumero()==numero) s = "Origem: " + Sistema.agenda.getVoos()[j].getCidadeEmbarque() + "    Saída: " + Sistema.agenda.getVoos()[j].getHorarioIda()
-											  + "\nDestino: " + Sistema.agenda.getVoos()[j].getCidadeDestino() + "    Chegada: " + Sistema.agenda.getVoos()[j].getHorarioChegada()
-											  + "\n--------------------Aeronave--------------------\n\n"; 
-		}
+		s = toString() + "Preço total = " + getPrecoTotal() + " Numero de passageiros = " + getNumPassageiros() + " Status = " + getStatus();
 		return s;
 	}
 	
